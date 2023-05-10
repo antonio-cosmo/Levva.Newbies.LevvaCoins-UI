@@ -17,7 +17,11 @@ export const Wrapper = styled.div`
     
     header{
         text-align: center;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
+    }
+
+    main{
+        padding: 2rem;
     }
 
 `
