@@ -1,3 +1,9 @@
+import { Header } from "../../components/Header";
+import { Homewrapper } from "./styles";
 export function Home() {
-    return <h1>Home</h1>
+    return (
+        <Homewrapper>
+            <Header />
+        </Homewrapper>
+    )
 }
