@@ -1,13 +1,15 @@
 import { ButtonHTMLAttributes, } from "react";
-import { Button } from "./styles";
+import { CustomButton } from "./styles";
 
 interface ButtonFormProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     text: string,
+    size?: "small" | "medium" | "large",
+    variant?: "primary" | "second"
 }
-export function ButtonForm({ text, ...props }: ButtonFormProps) {
+export function Button({ text, size = "medium", variant = "primary", ...props }: ButtonFormProps) {
     return (
-        <Button {...props}>
+        <CustomButton size={size} variant={variant} {...props}>
             {text}
-        </Button>
+        </CustomButton>
     )
 }

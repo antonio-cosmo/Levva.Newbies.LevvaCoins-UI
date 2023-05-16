@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import logoLevvaCoins from "../../assets/logo.svg";
-import { AuthBackgroud, Header, Wrapper } from "./styles";
+import { AuthBackgroud, AuthContent, AuthWrapper } from "./styles";
 
 interface AuthLayoutProps {
     title: string,
@@ -10,20 +10,20 @@ interface AuthLayoutProps {
 export function AuthLayout({ title, subtitle, children }: AuthLayoutProps) {
     return (
         <AuthBackgroud>
-            <Wrapper>
+            <AuthWrapper>
                 <header>
                     <img src={logoLevvaCoins} alt="Loogo da levva coins" />
                 </header>
-                <main>
+                <AuthContent>
                     <section>
-                        <Header>
+                        <div>
                             <h2>{title}</h2>
                             <p>{subtitle}</p>
-                        </Header>
+                        </div>
                         {children}
                     </section>
-                </main>
-            </Wrapper>
+                </AuthContent>
+            </AuthWrapper>
         </AuthBackgroud>
     )
 }

@@ -1,11 +1,11 @@
 import { InputHTMLAttributes } from "react";
-import { Input } from "./styles";
+import { Field } from "./styles";
 
 interface InputformProps extends InputHTMLAttributes<HTMLInputElement> {
     text: string,
 }
-export function InputForm({ text }: InputformProps) {
+export function Input({ text, ...props }: InputformProps) {
     return (
-        <Input placeholder={text} />
+        <Field placeholder={text} {...props} />
     )
 }
