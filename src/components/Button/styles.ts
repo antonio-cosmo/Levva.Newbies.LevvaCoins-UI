@@ -24,12 +24,12 @@ export const CustomButton = styled.button<CustomButtonProps>`
     color: ${props => props.variant == "primary" ? props.theme.black : props.theme.white};
     font-size: 1rem;
     font-weight: 700;
-    background: ${props => props.variant == "primary" ? props.theme["yellow-500"] : props.theme["gray-500"]};
+    background: ${props => props.variant == "primary" ? props.theme["yellow-500"] : props.theme["gray-400"]};
 
     transition: all .5s ;
 
     &:hover{
-        background: ${props => props.variant == "primary" ? props.theme["yellow-300"] : props.theme["gray-600"]};
+        background: ${props => props.variant == "primary" ? props.theme["yellow-400"] : props.theme["gray-600"]};
         cursor: pointer;
         ${props => props.variant === "second" && css`
             color: ${props => props.theme["yellow-500"]};

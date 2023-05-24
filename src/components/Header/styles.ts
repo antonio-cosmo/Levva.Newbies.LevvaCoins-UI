@@ -10,6 +10,7 @@ export const HeaderContainer = styled.header`
     grid-column-end: 5;
 
     border-bottom: 1px solid ${props => props.theme["yellow-500"]}30;
+
 `
 export const HeaderContent = styled.div`
     width: 100%;

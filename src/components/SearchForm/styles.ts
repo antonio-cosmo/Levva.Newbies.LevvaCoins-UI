@@ -18,9 +18,9 @@ export const SearchFormContainer = styled.div`
         padding: 1rem;
 
         background: transparent;
-        border: 1px solid ${p => p.theme["yellow-300"]};
+        border: 1px solid ${p => p.theme["yellow-500"]};
         border-radius: 6px;
-        color: ${p => p.theme["yellow-300"]};
+        color: ${p => p.theme["yellow-500"]};
 
         font-weight: 700;
 
