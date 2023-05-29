@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const HeaderContainer = styled.header`
+export const HeaderContainer = styled.div`
     background: linear-gradient(to bottom, ${props => props.theme.black}, ${props => props.theme["gary-700"]});
     padding: 2.5rem 0 7.5rem;
 
@@ -12,7 +12,7 @@ export const HeaderContainer = styled.header`
     border-bottom: 1px solid ${props => props.theme["yellow-500"]}30;
 
 `
-export const HeaderContent = styled.div`
+export const HeaderContent = styled.header`
     width: 100%;
     max-width: 70rem;
     grid-column: 2 / 3;
@@ -26,6 +26,13 @@ export const HeaderContent = styled.div`
         align-items: center;
         gap: 1rem;
     }
+
+    /* @media only screen and (min-width: 1440px){
+        position: relative;
+    }
+    @media only screen and (max-width: 1440px){
+        max-width: 1024px;
+    } */
 `
 export const UserAvatar = styled.img`
     width: 3.5rem;
@@ -43,5 +50,10 @@ export const UserAvatar = styled.img`
         cursor: pointer;
         border: 2px solid ${props => props.theme["yellow-500"]};
         box-shadow: 0px 0px 10px 20px #00000015;
+    }
+
+    @media only screen and (min-width: 1440px){
+        position: absolute;
+        height: auto;
     }
 `

@@ -5,7 +5,7 @@ import { X } from 'phosphor-react';
 
 interface ModalProps {
     title: string,
-    trigger: ReactNode,
+    trigger: JSX.Element,
     children?: ReactNode
 }
 export function Modal({ title, trigger, children }: ModalProps) {

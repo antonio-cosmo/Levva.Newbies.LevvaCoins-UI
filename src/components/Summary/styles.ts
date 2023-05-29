@@ -19,7 +19,7 @@ export const SummaryContainer = styled.section`
 `
 
 export const SummaryCard = styled.div<SummaryCardProps>`
-    background: ${props => props.theme["gray-500"]};
+    background: ${props => props.theme["gray-400"]};
     border-radius: 6px;
     padding: 2rem;
     box-shadow: 0px 0px 10px 5px #00000010;
@@ -38,7 +38,7 @@ export const SummaryCard = styled.div<SummaryCardProps>`
 
     ${props => props.variant === "balance" &&
         css`
-            background: linear-gradient(to bottom, ${p => p.theme["gray-500"]}, ${p => p.theme["gray-700"]});
+            background: linear-gradient(to bottom, ${p => p.theme["gray-400"]}, ${p => p.theme["gray-700"]});
             border-right: 2px solid ${p => p.theme["yellow-500"]};
             header{
                 color: ${p => p.theme["yellow-500"]};
