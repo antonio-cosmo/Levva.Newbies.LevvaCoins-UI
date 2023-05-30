@@ -9,7 +9,7 @@ import * as yup from "yup";
 import { FormError } from "../../styles/global";
 import { LoginUseCase } from "../../useCases/LoginUsecase/LoginUsecase";
 import { useStore } from "effector-react";
-import { loginStorage } from "../../stores/LoginStorage/LoginStorage";
+import { LoginStorage } from "../../stores/LoginStore/LoginStore";
 
 const formSchema = yup.object({
     email: yup.string().email("Digite um e-mail valido").required("O e-mail é obrigatorio"),
@@ -19,7 +19,7 @@ const formSchema = yup.object({
 type formData = yup.InferType<typeof formSchema>;
 
 export function Login() {
-    const { isLoading, hasError, errorMessage } = useStore(loginStorage);
+    const { isLoading, hasError, errorMessage } = useStore(LoginStorage);
 
     const { register, handleSubmit, formState: { errors } } = useForm<formData>({
         resolver: yupResolver(formSchema),
@@ -43,7 +43,7 @@ export function Login() {
                 {errors.email && <FormError>{errors.email.message}</FormError>}
 
                 <Input type="password" text="Senha" {...register("password")} />
-                {errors.email && <FormError>{errors.email.message}</FormError>}
+                {errors.password && <FormError>{errors.password.message}</FormError>}
                 {hasError && <FormError>{errorMessage}</FormError>}
                 <p>
                     <Link to="/new-account" >Não tem conta? Cadastre-se aqui.</Link>

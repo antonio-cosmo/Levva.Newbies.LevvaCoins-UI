@@ -8,7 +8,7 @@ const initialState: LoginState = {
     errorMessage: ""
 }
 
-export const loginStorage = createStore<LoginState>(initialState)
+export const LoginStorage = createStore<LoginState>(initialState)
     .on(loadLogin, (state) => ({
         ...state,
         isLoading: true
