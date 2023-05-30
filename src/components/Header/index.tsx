@@ -5,7 +5,6 @@ import { NewTransactionModal } from '../NewTransactionModal';
 import { Modal } from "../Modal";
 import { EditProfileModal } from "../EditProfileModal";
 import { NewCategoryModal } from "../NewCategoryModal";
-import { ReactNode } from "react";
 
 export function Header() {
 

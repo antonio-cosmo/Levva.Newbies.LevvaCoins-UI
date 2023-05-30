@@ -52,8 +52,8 @@ export const UserAvatar = styled.img`
         box-shadow: 0px 0px 10px 20px #00000015;
     }
 
-    @media only screen and (min-width: 1440px){
+    /* @media only screen and (min-width: 1440px){
         position: absolute;
         height: auto;
-    }
+    } */
 `

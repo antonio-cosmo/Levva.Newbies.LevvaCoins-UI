@@ -10,7 +10,7 @@
     {
       "uuid": "685597aa-1516-4a59-8ccc-ed3445986327",
       "name": "Users",
-      "collapsed": true,
+      "collapsed": false,
       "children": [
         {
           "type": "route",
@@ -29,7 +29,7 @@
     {
       "uuid": "070b1640-7f22-4702-899f-6ceb94a778f1",
       "name": "Categories",
-      "collapsed": true,
+      "collapsed": false,
       "children": [
         {
           "type": "route",

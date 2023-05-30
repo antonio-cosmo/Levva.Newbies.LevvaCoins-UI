@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, styled } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
    * {
@@ -21,4 +21,8 @@ export const GlobalStyle = createGlobalStyle`
         font: 400 1rem 'Roboto', sans-serif;
     }
   
+`
+
+export const FormError = styled.span`
+    color: ${p => p.theme["red-600"]};
 `
