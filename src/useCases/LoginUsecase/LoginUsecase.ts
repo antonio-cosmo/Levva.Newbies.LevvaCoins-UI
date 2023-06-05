@@ -1,7 +1,7 @@
 import { router } from "../../Router";
 import { LoginParams, LoginValues } from "../../domain/login";
 import { RequestError } from "../../domain/request";
-import { LocalStorageUser } from "../../helpers/LocalStorageUser";
+import { LocalStorageUser } from "../../helpers/localStorageUser";
 import { LoginService } from "../../services/LoginService/LoginService";
 import { loadLoginFail } from "../../stores/LoginStore/LoginEvents";
 import { loadLoginDone } from "../../stores/LoginStore/LoginEvents";
@@ -16,7 +16,9 @@ const execute = async ({ email, password }: LoginParams) => {
 
             loadLoginDone();
 
-            router.navigate("/home", { replace: true });
+            //import("../../pages/Home").then(() => router.navigate("/home", { replace: true }));
+
+            router.navigate("/home", { replace: true })
         })
         .catch(({ hasError, message }: RequestError) => {
             loadLoginFail({ hasError, message });

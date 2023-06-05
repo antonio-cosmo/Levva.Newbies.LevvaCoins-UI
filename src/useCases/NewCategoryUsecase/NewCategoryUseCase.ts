@@ -1,18 +1,19 @@
 import { NewCategoryParams } from "../../domain/category";
 import { RequestError } from "../../domain/request";
-import { NewCategoryService } from "../../services/NewCategoryService/NewCategoryService";
-import { loadNewACategory, loadNewACategoryDone, loadNewACategoryFail } from "../../stores/NewCategoryStore/NewCategoryEvents";
+import { CategoryService } from "../../services/CategoryService/CategoryService"
+import { loadCategory, loadNewACategoryDone, loadCategoryFail } from "../../stores/CategoryStore/CategoryEvents";
 
 const execute = async ({ description }: NewCategoryParams) => {
 
-    loadNewACategory();
+    loadCategory();
 
-    return NewCategoryService.createCategory({ description })
+    return CategoryService.createCategory({ description })
         .then(() => {
             loadNewACategoryDone();
         })
         .catch(({ hasError, message }: RequestError) => {
-            loadNewACategoryFail({ hasError, message });
+            loadCategoryFail({ hasError, message });
+            throw new Error();
         });
 }
 

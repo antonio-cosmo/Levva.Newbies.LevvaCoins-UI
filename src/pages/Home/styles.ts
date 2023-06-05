@@ -11,6 +11,7 @@ export const TransactionsContainer = styled.main`
     max-width: 70rem;
     color: ${p => p.theme["gray-300"]};
     margin-top: 2rem;
+    margin-bottom: 2rem;
 
     /* @media only screen and (max-width: 1440px){
         max-width: 1024px;
@@ -57,4 +58,21 @@ export const ButtonDelete = styled.button`
 
   background: none;
   border: 0;
+  svg{
+    color: ${p => p.theme["gray-300"]};
+  }
+  &:hover{
+    cursor: pointer;
+    svg{
+        color: ${p => p.theme["red-500"]};
+    }
+  }
+`
+export const TransactionEmpty = styled.div`
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
 `

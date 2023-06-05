@@ -1,6 +1,6 @@
 import Axios, { AxiosRequestConfig, } from "axios";
 import { getApiHost } from "../../services/HostService/HostService";
-import { LocalStorageUser } from "../../helpers/LocalStorageUser";
+import { LocalStorageUser } from "../../helpers/localStorageUser";
 import { LoginValues } from "../../domain/login";
 
 export interface IRequest {
@@ -21,8 +21,8 @@ Axios.interceptors.request.use((config) => {
 });
 
 export const Api = {
-    get: ({ url }: IRequest): Promise<any> => Axios.get(`${getApiHost()}${url}`),
+    get: ({ url, config }: IRequest): Promise<any> => Axios.get(`${getApiHost()}${url}`, config),
     post: ({ url, body, config }: IRequest): Promise<any> => Axios.post(`${getApiHost()}${url}`, body, config),
-    put: ({ url, body }: IRequest): Promise<any> => Axios.put(`${getApiHost()}${url}`, body),
-    delete: ({ url }: IRequest): Promise<any> => Axios.delete(`${getApiHost()}${url}`),
+    put: ({ url, body, config }: IRequest): Promise<any> => Axios.put(`${getApiHost()}${url}`, body, config),
+    delete: ({ url, config }: IRequest): Promise<any> => Axios.delete(`${getApiHost()}${url}`, config),
 }

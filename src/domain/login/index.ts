@@ -5,8 +5,15 @@ export interface LoginParams {
 
 export interface LoginValues {
     id: string
+    name: string
     email: string;
-    password: string
+    avatar: string
     token: string
+}
+
+export interface UpadateAccountParams {
+    id: string
+    name: string
+    avatar: string
 }
 

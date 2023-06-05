@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-import { LocalStorageUser } from "./LocalStorageUser";
+import { LocalStorageUser } from "./localStorageUser";
 export const validateToken = () => {
 
     const storageUser = LocalStorageUser.getUser("user")

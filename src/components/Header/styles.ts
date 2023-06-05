@@ -34,26 +34,3 @@ export const HeaderContent = styled.header`
         max-width: 1024px;
     } */
 `
-export const UserAvatar = styled.img`
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    box-shadow: 0px 0px 10px 10px #00000010;
-
-    grid-column: 3 / 4 ;
-    display: flex;
-    justify-self: flex-end;
-
-    transition: all .3s;
-    &:hover{
-        cursor: pointer;
-        border: 2px solid ${props => props.theme["yellow-500"]};
-        box-shadow: 0px 0px 10px 20px #00000015;
-    }
-
-    /* @media only screen and (min-width: 1440px){
-        position: absolute;
-        height: auto;
-    } */
-`
