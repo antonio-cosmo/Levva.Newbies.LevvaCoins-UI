@@ -11,7 +11,6 @@ import { Format } from "../../helpers/format";
 import { RemoveTransactionUseCase } from "../../useCases/RemoveTransactionUseCase/RemoveTransactionUseCase";
 export function Home() {
     const { isLoading, transactions } = useStore(TransactionStore)
-
     useEffect(() => {
         GetTransactionsUseCase.execute();
 
@@ -19,8 +18,8 @@ export function Home() {
 
     const onRemoveTransaction = (transactionId: string) => {
         RemoveTransactionUseCase.execute({ id: transactionId });
-        //transactions.filter(transaction => transaction.id !== transactionId)
     }
+
     return (
         <Homewrapper>
             <Header />

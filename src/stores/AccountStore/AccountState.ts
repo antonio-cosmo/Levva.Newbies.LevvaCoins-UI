@@ -1,4 +1,4 @@
-export interface UpdateAccountState {
+export interface AccountState {
     isLoading: boolean;
     hasError: boolean;
     errorMessage: string

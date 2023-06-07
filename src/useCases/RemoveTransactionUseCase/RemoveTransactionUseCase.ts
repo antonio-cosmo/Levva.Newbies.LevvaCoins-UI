@@ -1,4 +1,3 @@
-import { useStore } from "effector-react/effector-react.umd";
 import { RequestError } from "../../domain/request";
 import { RemoveTransactionParams } from "../../domain/transaction";
 import { TransactionService } from "../../services/TransactionService/TransactionService";
@@ -11,8 +10,8 @@ const execute = async ({ id }: RemoveTransactionParams) => {
 
     return TransactionService.removeTransaction({ id })
         .then(() => {
-            loadRemoveTransactionDone();
-            GetTransactionsUseCase.execute();
+            loadRemoveTransactionDone(id);
+            //GetTransactionsUseCase.execute();
         })
         .catch(({ hasError, message }: RequestError) => {
             loadTransactionFail({ hasError, message });

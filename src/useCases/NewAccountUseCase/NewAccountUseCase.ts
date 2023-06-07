@@ -2,7 +2,7 @@ import { router } from "../../Router";
 import { NewAccountParams } from "../../domain/newAccount";
 import { RequestError } from "../../domain/request";
 import { NewAccountService } from "../../services/NewAccountService/NewAccountService";
-import { loadNewAccount, loadNewAccountDone, loadNewAccountFail } from "../../stores/NewAccountStore/NewAccountEvents";
+import { loadNewAccount, loadNewAccountDone, loadNewAccountFail } from "../../stores/AccountStore/AccountEvents";
 
 const execute = async ({ name, email, password }: NewAccountParams) => {
 

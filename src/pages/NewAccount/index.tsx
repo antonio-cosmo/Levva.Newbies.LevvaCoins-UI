@@ -8,8 +8,8 @@ import { Input } from "../../components/Input";
 import { AuthLayout } from "../../layouts/AuthLayout";
 import { Form } from "./styles";
 import { NewAccountUseCase } from "../../useCases/NewAccountUseCase/NewAccountUseCase";
-import { NewAccountStorage } from "../../stores/NewAccountStore/NewAccountStore";
 import { FormError } from "../../styles/global";
+import { AccountStore } from "../../stores/AccountStore/AccountStore";
 
 const formSchema = yup.object({
     name: yup.string().required("O nome é obrigatorio"),
@@ -22,7 +22,7 @@ type formData = yup.InferType<typeof formSchema>;
 
 export function NewAccount() {
 
-    const { isLoading, hasError, errorMessage } = useStore(NewAccountStorage);
+    const { isLoading, hasError, errorMessage } = useStore(AccountStore);
 
     const { register, handleSubmit, formState: { errors } } = useForm<formData>({
         resolver: yupResolver(formSchema),

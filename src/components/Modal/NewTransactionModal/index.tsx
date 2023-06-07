@@ -3,7 +3,7 @@ import { TransactionTypeContainer, RadioBox, Form } from './styles'
 import { Input } from '../../Input'
 import { Button } from '../../Button'
 import { Modal } from '..'
-import { ChangeEvent, FormEvent, FormEventHandler, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -11,9 +11,10 @@ import { NewTransactionUseCase } from '../../../useCases/NewTransactionUseCase/N
 import { useStore } from 'effector-react/effector-react.mjs'
 import { TransactionStore } from '../../../stores/TransactionStore/TransactionStore'
 import { NewCategoryStore } from '../../../stores/CategoryStore/CategoryStore'
-import { FormError, Select } from '../../../styles/global'
+import { FormError } from '../../../styles/global'
 import { GetCategoriesUseCase } from '../../../useCases/GetCategoriesUseCase/GetCategoriesUseCase'
 import { GetTransactionsUseCase } from '../../../useCases/GetTransactionsUseCase/GetTransactionsUseCase'
+import { Select } from '../../Select'
 
 const formSchema = yup.object({
     description: yup.string().required("A descrição é obrigatoria"),

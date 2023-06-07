@@ -12,7 +12,7 @@ const sizeValue = {
     large: "3.625rem"
 }
 
-export const CustomButton = styled.button<CustomButtonProps>`
+export const Container = styled.button<CustomButtonProps>`
     height: ${props => sizeValue[props.size]};
 
     display: flex;

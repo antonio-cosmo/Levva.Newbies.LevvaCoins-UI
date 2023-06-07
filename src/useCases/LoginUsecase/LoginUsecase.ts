@@ -16,9 +16,7 @@ const execute = async ({ email, password }: LoginParams) => {
 
             loadLoginDone();
 
-            //import("../../pages/Home").then(() => router.navigate("/home", { replace: true }));
-
-            router.navigate("/home", { replace: true })
+            import("../../pages/Home").then(() => router.navigate("/home", { replace: true }));
         })
         .catch(({ hasError, message }: RequestError) => {
             loadLoginFail({ hasError, message });

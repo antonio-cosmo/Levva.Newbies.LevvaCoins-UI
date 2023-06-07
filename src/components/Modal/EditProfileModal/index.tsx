@@ -11,8 +11,8 @@ import { useState } from "react";
 import { LocalStorageUser } from "../../../helpers/localStorageUser";
 import { LoginValues } from "../../../domain/login";
 import { UpdateAccountUseCase } from "../../../useCases/UpdateAccountUseCase/UpdateAccountUseCase";
-import { UpdateAccountStore } from "../../../stores/UpdateAccountStore/UpdateAccountStore";
 import { FormError } from "../../../styles/global";
+import { AccountStore } from "../../../stores/AccountStore/AccountStore";
 
 const formSchema = yup.object({
     name: yup.string().required("A descrição é obrigatoria")
@@ -30,7 +30,7 @@ export function EditProfileModal() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<formData>({
         resolver: yupResolver(formSchema)
     })
-    const { isLoading, hasError, errorMessage } = useStore(UpdateAccountStore);
+    const { isLoading, hasError, errorMessage } = useStore(AccountStore);
     const avatarButton = <UserAvatar src="https://avatars.githubusercontent.com/u/77928459?v=4" variante="normal" />
 
     const handleEditProfile = ({ name }: formData) => {
@@ -47,8 +47,7 @@ export function EditProfileModal() {
     }
     const handleSignOut = () => {
         window.localStorage.removeItem("user");
-        //import("../../../pages/Login").then(() => router.navigate("/login", { replace: true }));
-        router.navigate("/login", { replace: true })
+        import("../../../pages/Login").then(() => router.navigate("/login", { replace: true }));
     }
     return (
         <Modal title="Meu perfil" trigger={avatarButton} >

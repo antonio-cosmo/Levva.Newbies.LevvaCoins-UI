@@ -4,6 +4,6 @@ import { TransactionValues } from "../../domain/transaction";
 
 export const loadTransaction = createEvent("loadTransaction");
 export const loadNewTransactionDone = createEvent("loadNewTransactionDone");
-export const loadRemoveTransactionDone = createEvent("loadRemoveTransactionDone");
+export const loadRemoveTransactionDone = createEvent<string>("loadRemoveTransactionDone");
 export const loadTransactionDone = createEvent<TransactionValues[]>("loadTransactionDone");
 export const loadTransactionFail = createEvent<RequestError>("loadTransactionFail");
