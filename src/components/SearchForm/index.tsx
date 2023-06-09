@@ -13,7 +13,7 @@ const formSchema = yup.object({
 type formData = yup.InferType<typeof formSchema>;
 
 export function SearchForm() {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<formData>({
+    const { register, handleSubmit } = useForm<formData>({
         resolver: yupResolver(formSchema)
     })
 
@@ -25,7 +25,7 @@ export function SearchForm() {
             <Input type="text" text="Busque por trasações" {...register("search")} />
             <button type="submit">
                 <MagnifyingGlass size={20} />
-                Buscar
+                <span>Buscar</span>
             </button>
         </SearchFormContainer>
     )

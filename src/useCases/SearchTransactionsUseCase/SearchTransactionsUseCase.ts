@@ -18,5 +18,5 @@ const execute = async (search: string) => {
 }
 
 export const SearchTransactionsUseCase = {
-    execute
+    execute,
 }
