@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import * as RadioGroup from '@radix-ui/react-radio-group';
-// import { darken, transparentize } from 'polished'
 
 export const Form = styled.form`
     margin-top: 2rem;

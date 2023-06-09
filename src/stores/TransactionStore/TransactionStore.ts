@@ -14,11 +14,11 @@ export const TransactionStore = createStore<TransactionState>(initialState)
         ...state,
         isLoading: true
     }))
-    .on(loadNewTransactionDone, (state) => ({
-        ...state,
+    .on(loadNewTransactionDone, (state, data) => ({
         isLoading: false,
         hasError: false,
-        errorMessage: ""
+        errorMessage: "",
+        transactions: [data, ...state.transactions]
     }))
     .on(loadRemoveTransactionDone, (state, id) => (
         {

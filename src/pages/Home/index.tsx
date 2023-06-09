@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useStore } from "effector-react";
-import { Trash } from "phosphor-react";
+import { TrashSimple } from "phosphor-react";
 import { Header } from "../../components/Header";
 import { SearchForm } from "../../components/SearchForm";
 import { Summary } from "../../components/Summary";
@@ -10,7 +10,8 @@ import { GetTransactionsUseCase } from "../../useCases/GetTransactionsUseCase/Ge
 import { Format } from "../../helpers/format";
 import { RemoveTransactionUseCase } from "../../useCases/RemoveTransactionUseCase/RemoveTransactionUseCase";
 export function Home() {
-    const { isLoading, transactions } = useStore(TransactionStore)
+    const { isLoading, transactions } = useStore(TransactionStore);
+
     useEffect(() => {
         GetTransactionsUseCase.execute();
 
@@ -51,7 +52,7 @@ export function Home() {
                                     <td>{Format.DateFormat(transaction.createdAt)}</td>
                                     <td>
                                         <ButtonDelete onClick={() => onRemoveTransaction(transaction.id)}>
-                                            <Trash size={24} />
+                                            <TrashSimple size={24} />
                                         </ButtonDelete>
                                     </td>
                                 </tr>

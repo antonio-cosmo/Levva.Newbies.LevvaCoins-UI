@@ -21,7 +21,7 @@ const createTransaction = async ({ description, amount, type, categoryId }: NewT
 
 const getTransactions = async () => {
     return Api.get({
-        url: "/transaction/all",
+        url: "/transaction",
     })
         .then(response => response.data)
         .catch((err: AxiosError<RequestError>) => {
@@ -42,7 +42,7 @@ const removeTransaction = async ({ id }: RemoveTransactionParams) => {
 const seachTransactions = async (text: string) => {
     if (text.length <= 0) return getTransactions();
     return Api.get({
-        url: "/transaction/description",
+        url: "/transaction",
         config: {
             params: {
                 search: text

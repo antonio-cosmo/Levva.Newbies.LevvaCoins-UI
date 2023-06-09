@@ -14,11 +14,11 @@ export const NewCategoryStore = createStore<CategoryState>(initialState)
         ...state,
         isLoading: true
     }))
-    .on(loadNewACategoryDone, (state) => ({
-        ...state,
+    .on(loadNewACategoryDone, (state, data) => ({
         isLoading: false,
         hasError: false,
-        errorMessage: ""
+        errorMessage: "",
+        categories: [data, ...state.categories]
     }))
     .on(loadCategoryDone, (_, data) => ({
         isLoading: false,

@@ -13,7 +13,6 @@ import { TransactionStore } from '../../../stores/TransactionStore/TransactionSt
 import { NewCategoryStore } from '../../../stores/CategoryStore/CategoryStore'
 import { FormError } from '../../../styles/global'
 import { GetCategoriesUseCase } from '../../../useCases/GetCategoriesUseCase/GetCategoriesUseCase'
-import { GetTransactionsUseCase } from '../../../useCases/GetTransactionsUseCase/GetTransactionsUseCase'
 import { Select } from '../../Select'
 
 const formSchema = yup.object({
@@ -50,7 +49,6 @@ export function NewTransactionModal() {
         })
             .then(() => {
                 closeModalRef.current?.click();
-                GetTransactionsUseCase.execute();
             })
             .finally(() => reset());
     }
@@ -68,7 +66,8 @@ export function NewTransactionModal() {
                 <Input type='number' text='Valor' {...register("amount")} step="0.1" min="0" max="999999" />
                 {errors.amount && <FormError>{errors.amount.message}</FormError>}
 
-                <Select {...register("categoryId")} >
+                <Select defaultValue="" {...register("categoryId")} >
+                    <option value="" disabled hidden>Categoria</option>
                     {categories.map((category) => <option key={category.id} value={category.id}>{category.description}</option>)}
                 </Select>
                 {errors.categoryId && <FormError>{errors.categoryId.message}</FormError>}

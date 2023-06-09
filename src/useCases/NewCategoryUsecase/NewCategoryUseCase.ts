@@ -1,3 +1,4 @@
+import { CategoryValues } from './../../domain/category/index';
 import { NewCategoryParams } from "../../domain/category";
 import { RequestError } from "../../domain/request";
 import { CategoryService } from "../../services/CategoryService/CategoryService"
@@ -8,8 +9,8 @@ const execute = async ({ description }: NewCategoryParams) => {
     loadCategory();
 
     return CategoryService.createCategory({ description })
-        .then(() => {
-            loadNewACategoryDone();
+        .then((category: CategoryValues) => {
+            loadNewACategoryDone(category);
         })
         .catch(({ hasError, message }: RequestError) => {
             loadCategoryFail({ hasError, message });
