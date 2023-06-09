@@ -11,8 +11,8 @@ const createCategory = async ({ description }: NewCategoryParams) => {
         }
     })
         .then(response => response.data)
-        .catch((err: AxiosError<RequestError>) => {
-            throw err.response?.data;
+        .catch((error: AxiosError<RequestError>) => {
+            throw error.response?.data;
         });
 }
 
@@ -21,8 +21,8 @@ const getCategories = async () => {
         url: "/category",
     })
         .then(response => response.data)
-        .catch((err: AxiosError<RequestError>) => {
-            throw err.response?.data;
+        .catch((error: AxiosError<RequestError>) => {
+            throw error.response?.data;
         });
 }
 export const CategoryService = {

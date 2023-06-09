@@ -43,6 +43,7 @@ export function NewCategoryModal() {
             <Form onSubmit={handleSubmit(handleNewCategory)}>
                 <Input type="text" text="Descrição" {...register("description")} />
                 {errors.description && <FormError>{errors.description.message}</FormError>}
+
                 {hasError && <FormError>{errorMessage}</FormError>}
                 <Button type="submit" text="Cadastrar" isLoading={isLoading} />
             </Form>

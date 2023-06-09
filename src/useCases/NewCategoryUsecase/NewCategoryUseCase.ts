@@ -9,8 +9,8 @@ const execute = async ({ description }: NewCategoryParams) => {
     loadCategory();
 
     return CategoryService.createCategory({ description })
-        .then((category: CategoryValues) => {
-            loadNewACategoryDone(category);
+        .then(({ id, description }: CategoryValues) => {
+            loadNewACategoryDone({ id, description });
         })
         .catch(({ hasError, message }: RequestError) => {
             loadCategoryFail({ hasError, message });
