@@ -18,24 +18,26 @@ export const NewCategoryStore = createStore<CategoryState>(initialState)
     ))
     .on(loadNewACategoryDone, (state, data) => (
         {
+            ...state,
             isLoading: false,
             hasError: false,
             errorMessage: "",
             categories: [data, ...state.categories]
         }
     ))
-    .on(loadCategoryDone, (_, data) => (
+    .on(loadCategoryDone, (state, data) => (
         {
+            ...state,
             isLoading: false,
             categories: data,
             hasError: false,
             errorMessage: ""
         }
     ))
-    .on(loadCategoryFail, (_, data) => (
+    .on(loadCategoryFail, (state, data) => (
         {
+            ...state,
             isLoading: false,
-            categories: [],
             hasError: data.hasError,
             errorMessage: data.message
         }

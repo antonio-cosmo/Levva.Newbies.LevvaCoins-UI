@@ -2,7 +2,12 @@ export interface NewAccountParams {
     name: string
     email: string;
     password: string
-    //confirmPassword: string
+}
+
+export interface UpadateAccountParams {
+    id: string
+    name: string
+    avatar: string
 }
 
 export interface AccountValues {

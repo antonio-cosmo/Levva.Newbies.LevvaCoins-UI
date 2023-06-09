@@ -1,14 +1,14 @@
 import { router } from "../../Router";
-import { NewAccountParams } from "../../domain/newAccount";
+import { NewAccountParams } from "../../domain/account";
 import { RequestError } from "../../domain/request";
-import { NewAccountService } from "../../services/NewAccountService/NewAccountService";
+import { AccountService } from "../../services/AccountService/AccountService";
 import { loadNewAccount, loadNewAccountDone, loadNewAccountFail } from "../../stores/AccountStore/AccountEvents";
 
 const execute = async ({ name, email, password }: NewAccountParams) => {
 
     loadNewAccount();
 
-    return NewAccountService.createUser({ name, email, password })
+    return AccountService.createUser({ name, email, password })
         .then(() => {
             loadNewAccountDone();
             router.navigate("/login");

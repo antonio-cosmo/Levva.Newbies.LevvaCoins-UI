@@ -11,9 +11,4 @@ export interface LoginValues {
     token: string
 }
 
-export interface UpadateAccountParams {
-    id: string
-    name: string
-    avatar: string
-}
 

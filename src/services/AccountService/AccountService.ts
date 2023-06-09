@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { Api } from "../../clients/api/Api";
-import { NewAccountParams } from "../../domain/newAccount";
 import { RequestError } from "../../domain/request";
+import { NewAccountParams, UpadateAccountParams } from "../../domain/account";
 
 const createUser = async ({ name, email, password }: NewAccountParams) => {
     return Api.post({
@@ -19,6 +19,21 @@ const createUser = async ({ name, email, password }: NewAccountParams) => {
         });
 }
 
-export const NewAccountService = {
-    createUser
+const updateAccount = async ({ name, avatar, id }: UpadateAccountParams) => {
+    return Api.put({
+        url: `/user/${id}`,
+        body: {
+            name,
+            avatar
+        }
+    })
+        .then(response => response.data)
+        .catch((err: AxiosError<RequestError>) => {
+            throw err.response?.data;
+        });
+}
+
+export const AccountService = {
+    createUser,
+    updateAccount
 }

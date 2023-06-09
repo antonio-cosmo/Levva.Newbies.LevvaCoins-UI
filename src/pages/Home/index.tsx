@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useStore } from "effector-react";
-import { TrashSimple } from "phosphor-react";
 import { Header } from "../../components/Header";
 import { SearchForm } from "../../components/SearchForm";
 import { Summary } from "../../components/Summary";
-import { ButtonDelete, Homewrapper, PriceHighLight, TransactionEmpty, TransactionsContainer, TransactionsTable } from "./styles";
+import { Homewrapper, PriceHighLight, TransactionEmpty, TransactionsContainer, TransactionsTable } from "./styles";
 import { TransactionStore } from "../../stores/TransactionStore/TransactionStore";
 import { GetTransactionsUseCase } from "../../useCases/GetTransactionsUseCase/GetTransactionsUseCase";
 import { Format } from "../../helpers/format";
 import { RemoveTransactionUseCase } from "../../useCases/RemoveTransactionUseCase/RemoveTransactionUseCase";
+import { ActionDeleteModal } from "../../components/Modal/ActionDeleteModal/indext";
 export function Home() {
     const { isLoading, transactions } = useStore(TransactionStore);
 
@@ -51,9 +51,7 @@ export function Home() {
                                     <td>{transaction.category.description}</td>
                                     <td>{Format.DateFormat(transaction.createdAt)}</td>
                                     <td>
-                                        <ButtonDelete onClick={() => onRemoveTransaction(transaction.id)}>
-                                            <TrashSimple size={24} />
-                                        </ButtonDelete>
+                                        <ActionDeleteModal onRemove={onRemoveTransaction} idToRemove={transaction.id} />
                                     </td>
                                 </tr>
                             ))}

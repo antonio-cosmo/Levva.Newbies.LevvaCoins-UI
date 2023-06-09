@@ -51,23 +51,6 @@ export const PriceHighLight = styled.span<PriceHighLightProps>`
             ? props.theme["yellow-500"]
             : props.theme["red-500"]};
 `
-export const ButtonDelete = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: none;
-  border: 0;
-  svg{
-    color: ${p => p.theme["gray-300"]};
-  }
-  &:hover{
-    cursor: pointer;
-    svg{
-        color: ${p => p.theme["red-500"]};
-    }
-  }
-`
 export const TransactionEmpty = styled.div`
     width: 100%;
     height: 20rem;

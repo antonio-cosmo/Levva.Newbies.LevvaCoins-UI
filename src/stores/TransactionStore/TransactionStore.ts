@@ -32,18 +32,19 @@ export const TransactionStore = createStore<TransactionState>(initialState)
             errorMessage: ""
         }
     ))
-    .on(loadTransactionDone, (_, data) => (
+    .on(loadTransactionDone, (state, data) => (
         {
+            ...state,
             isLoading: false,
             transactions: data,
             hasError: false,
             errorMessage: ""
         }
     ))
-    .on(loadTransactionFail, (_, data) => (
+    .on(loadTransactionFail, (state, data) => (
         {
+            ...state,
             isLoading: false,
-            transactions: [],
             hasError: data.hasError,
             errorMessage: data.message
         }

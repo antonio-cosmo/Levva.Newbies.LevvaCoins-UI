@@ -10,6 +10,7 @@ import { NewCategoryStore } from "../../../stores/CategoryStore/CategoryStore";
 import { NewCategoryUseCase } from "../../../useCases/NewCategoryUsecase/NewCategoryUseCase";
 import { Modal } from "..";
 import { useRef } from "react";
+import { GetCategoriesUseCase } from "../../../useCases/GetCategoriesUseCase/GetCategoriesUseCase";
 
 const formSchema = yup.object({
     description: yup.string().required("A descrição é obrigatoria")

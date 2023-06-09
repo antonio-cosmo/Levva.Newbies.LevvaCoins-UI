@@ -27,7 +27,7 @@ export function EditProfileModal() {
         return storage
     })
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<formData>({
+    const { register, handleSubmit } = useForm<formData>({
         resolver: yupResolver(formSchema)
     })
     const { isLoading, hasError, errorMessage } = useStore(AccountStore);
