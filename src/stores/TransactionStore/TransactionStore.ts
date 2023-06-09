@@ -27,7 +27,7 @@ export const TransactionStore = createStore<TransactionState>(initialState)
     .on(loadRemoveTransactionDone, (state, id) => (
         {
             isLoading: false,
-            transactions: [...state.transactions.filter(transaction => transaction.id !== id)],
+            transactions: [...state.transactions.filter(t => t.id !== id)],
             hasError: false,
             errorMessage: ""
         }

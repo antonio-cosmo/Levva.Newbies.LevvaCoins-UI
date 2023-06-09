@@ -17,5 +17,5 @@ const execute = async ({ id }: RemoveTransactionParams) => {
 }
 
 export const RemoveTransactionUseCase = {
-    execute
+    execute,
 }

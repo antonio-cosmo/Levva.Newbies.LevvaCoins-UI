@@ -17,8 +17,8 @@ export function Home() {
 
     }, []);
 
-    const onRemoveTransaction = (transactionId: string) => {
-        RemoveTransactionUseCase.execute({ id: transactionId });
+    const onRemoveTransaction = (id: string) => {
+        RemoveTransactionUseCase.execute({ id });
     }
 
     return (
