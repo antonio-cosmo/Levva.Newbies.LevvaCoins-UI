@@ -14,8 +14,8 @@ const createTransaction = async ({ description, amount, type, categoryId }: NewT
         }
     })
         .then(response => response.data)
-        .catch((err: AxiosError<RequestError>) => {
-            throw err.response?.data;
+        .catch((error: AxiosError<RequestError>) => {
+            throw error.response?.data;
         });
 }
 
@@ -24,8 +24,8 @@ const getTransactions = async () => {
         url: "/transaction",
     })
         .then(response => response.data)
-        .catch((err: AxiosError<RequestError>) => {
-            throw err.response?.data;
+        .catch((error: AxiosError<RequestError>) => {
+            throw error.response?.data;
         });
 }
 
@@ -34,8 +34,8 @@ const removeTransaction = async ({ id }: RemoveTransactionParams) => {
         url: `/transaction/${id}`,
     })
         .then(response => response.data)
-        .catch((err: AxiosError<RequestError>) => {
-            throw err.response?.data;
+        .catch((error: AxiosError<RequestError>) => {
+            throw error.response?.data;
         });
 }
 
@@ -50,8 +50,8 @@ const seachTransactions = async (text: string) => {
         }
     })
         .then(response => response.data)
-        .catch((err: AxiosError<RequestError>) => {
-            throw err.response?.data;
+        .catch((error: AxiosError<RequestError>) => {
+            throw error.response?.data;
         });
 }
 

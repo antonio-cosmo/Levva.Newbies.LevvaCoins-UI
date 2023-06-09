@@ -10,16 +10,20 @@ const initialState: TransactionState = {
 }
 
 export const TransactionStore = createStore<TransactionState>(initialState)
-    .on(loadTransaction, (state) => ({
-        ...state,
-        isLoading: true
-    }))
-    .on(loadNewTransactionDone, (state, data) => ({
-        isLoading: false,
-        hasError: false,
-        errorMessage: "",
-        transactions: [data, ...state.transactions]
-    }))
+    .on(loadTransaction, (state) => (
+        {
+            ...state,
+            isLoading: true
+        }
+    ))
+    .on(loadNewTransactionDone, (state, data) => (
+        {
+            isLoading: false,
+            hasError: false,
+            errorMessage: "",
+            transactions: [data, ...state.transactions]
+        }
+    ))
     .on(loadRemoveTransactionDone, (state, id) => (
         {
             isLoading: false,
@@ -28,16 +32,19 @@ export const TransactionStore = createStore<TransactionState>(initialState)
             errorMessage: ""
         }
     ))
-    .on(loadTransactionDone, (_, data) => ({
-        isLoading: false,
-        transactions: data,
-        hasError: false,
-        errorMessage: ""
-
-    }))
-    .on(loadTransactionFail, (_, data) => ({
-        isLoading: false,
-        transactions: [],
-        hasError: data.hasError,
-        errorMessage: data.message
-    }));
+    .on(loadTransactionDone, (_, data) => (
+        {
+            isLoading: false,
+            transactions: data,
+            hasError: false,
+            errorMessage: ""
+        }
+    ))
+    .on(loadTransactionFail, (_, data) => (
+        {
+            isLoading: false,
+            transactions: [],
+            hasError: data.hasError,
+            errorMessage: data.message
+        }
+    ));

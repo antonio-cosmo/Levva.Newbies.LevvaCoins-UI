@@ -8,8 +8,8 @@ const execute = async ({ description, amount, type, categoryId }: NewTransaction
     loadTransaction();
 
     return TransactionService.createTransaction({ description, amount, type, categoryId })
-        .then((transaction: TransactionValues) => {
-            loadNewTransactionDone(transaction);
+        .then(({ id, description, amount, type, category, createdAt }: TransactionValues) => {
+            loadNewTransactionDone({ id, description, amount, type, category, createdAt });
         })
         .catch(({ hasError, message }: RequestError) => {
             loadTransactionFail({ hasError, message });
