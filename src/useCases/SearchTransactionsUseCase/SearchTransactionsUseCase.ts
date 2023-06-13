@@ -4,7 +4,7 @@ import { TransactionService } from "../../services/TransactionService/Transactio
 import { loadTransaction, loadTransactionDone, loadTransactionFail } from "../../stores/TransactionStore/TransactionEvents";
 
 
-const execute = async (search: string) => {
+const execute = async (search: string | null) => {
 
     loadTransaction();
 
