@@ -1,7 +1,6 @@
 import Axios, { AxiosRequestConfig, } from "axios";
 import { getApiHost } from "../../services/HostService/HostService";
 import { LocalStorageUser } from "../../helpers/localStorageUser";
-import { LoginValues } from "../../domain/login";
 
 export interface IRequest {
     url: string;
@@ -11,11 +10,9 @@ export interface IRequest {
 
 Axios.interceptors.request.use((config) => {
     const storageUser = LocalStorageUser.getUser("user")
-    if (!storageUser) return config;
 
-    if (!storageUser.token) return config;
-
-    config.headers.Authorization = storageUser.token;
+    if (storageUser && storageUser.token)
+        config.headers.Authorization = storageUser.token;
 
     return config;
 });
