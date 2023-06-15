@@ -52,6 +52,10 @@
         },
         {
           "type": "route",
+          "uuid": "a91cac26-1efd-4183-99cc-c44ea134e495"
+        },
+        {
+          "type": "route",
           "uuid": "7284fcc0-9d55-44da-b719-06c3fbea7f60"
         },
         {
@@ -191,7 +195,7 @@
       "responses": [
         {
           "uuid": "931dc79e-fd83-4fb4-be80-4b2166a97ae3",
-          "body": "{\n  \"id\":\"{{guid}}\",\n  \"description\":\"Nova categoria criada\"\n}",
+          "body": "{\n  \"id\":\"{{guid}}\",\n  \"description\":\"{{Body 'description'}}\"\n}",
           "latency": 0,
           "statusCode": 201,
           "label": "",
@@ -483,7 +487,7 @@
       "responses": [
         {
           "uuid": "ca839308-4353-4d4a-9fbc-efafde4a854e",
-          "body": "\n{\n  \"id\": \"{{guid}}\",\n  \"description\": \"Nova transação criada\",\n  \"amount\": {{toFixed (float 10.00 100.00) 2}},\n  \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n  \"category\": {\n    \"id\":\"{{guid}}\",\n    \"description\":\"{{faker 'commerce.department'}}\"\n  },\n  \"createdAt\":\"{{now 'YYYY-MM-dd'}}\"\n}\n",
+          "body": "\n{\n  \"id\": \"{{guid}}\",\n  \"description\": \"{{Body 'description'}}\",\n  \"amount\": {{toFixed (float 10.00 100.00) 2}},\n  \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n  \"category\": {\n    \"id\":\"{{guid}}\",\n    \"description\":\"{{faker 'commerce.department'}}\"\n  },\n  \"createdAt\":\"{{now 'YYYY-MM-dd'}}\"\n}\n",
           "latency": 0,
           "statusCode": 201,
           "label": "",
@@ -553,6 +557,64 @@
         },
         {
           "uuid": "4018464e-4f92-4421-97ec-cfee11b256af",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Usuário não autenticado.\"\r\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6ImpvaG4uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.JNO2NHtOWoMK_4YA12XhFP6ugAN85Sru4fZU5IIOgto",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a91cac26-1efd-4183-99cc-c44ea134e495",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "transaction/search",
+      "responses": [
+        {
+          "uuid": "6ca60598-c399-4e50-a795-a6fceb133a52",
+          "body": "[\n  {{#repeat 5 10}}\n    {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.productName'}}\",\n      \"amount\": {{toFixed (float 10.00 100.00) 2}},\n      \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n      \"category\": {\n        \"id\":\"{{guid}}\",\n        \"description\":\"{{faker 'commerce.department'}}\"\n      },\n      \"createdAt\":\"{{now 'YYYY-MM-dd'}}\"\n    }\n  {{/repeat}}\n]\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "query",
+              "value": "{{query.query}}"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "dbaf1d00-0c64-4889-b005-b5c205f41939",
           "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Usuário não autenticado.\"\r\n}",
           "latency": 0,
           "statusCode": 401,

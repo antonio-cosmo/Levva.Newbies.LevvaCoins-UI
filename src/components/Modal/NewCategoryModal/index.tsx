@@ -6,11 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FormError } from "../../../styles/global";
 import { useStore } from "effector-react/compat";
-import { NewCategoryStore } from "../../../stores/CategoryStore/CategoryStore";
+import { CategoryStore } from "../../../stores/CategoryStore/CategoryStore";
 import { NewCategoryUseCase } from "../../../useCases/NewCategoryUsecase/NewCategoryUseCase";
 import { Modal } from "..";
 import { useRef } from "react";
-import { GetCategoriesUseCase } from "../../../useCases/GetCategoriesUseCase/GetCategoriesUseCase";
 
 const formSchema = yup.object({
     description: yup.string().required("A descrição é obrigatoria")
@@ -18,11 +17,11 @@ const formSchema = yup.object({
 
 type formData = yup.InferType<typeof formSchema>;
 export function NewCategoryModal() {
-    const newCategoryButton = <Button type="button" text="Nova Categoria" size="medium" variant="second" />
+    const newCategoryButton = <Button type="button" text="Nova Categoria" size="medium" variant="second" />;
 
     const closeModalRef = useRef<HTMLButtonElement>(null);
 
-    const { isLoading, hasError, errorMessage } = useStore(NewCategoryStore);
+    const { isLoading, hasError, errorMessage } = useStore(CategoryStore);
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm<formData>({
         resolver: yupResolver(formSchema)
@@ -31,7 +30,7 @@ export function NewCategoryModal() {
     const handleNewCategory = ({ description }: formData) => {
         NewCategoryUseCase.execute({ description })
             .then(() => { closeModalRef.current?.click() })
-            .finally(() => reset())
+            .finally(() => reset());
     }
 
     return (

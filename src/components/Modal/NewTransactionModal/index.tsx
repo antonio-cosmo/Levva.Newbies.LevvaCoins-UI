@@ -10,7 +10,7 @@ import * as yup from "yup";
 import { NewTransactionUseCase } from '../../../useCases/NewTransactionUseCase/NewTransactionUseCase'
 import { useStore } from 'effector-react/effector-react.mjs'
 import { TransactionStore } from '../../../stores/TransactionStore/TransactionStore'
-import { NewCategoryStore } from '../../../stores/CategoryStore/CategoryStore'
+import { CategoryStore } from '../../../stores/CategoryStore/CategoryStore'
 import { FormError } from '../../../styles/global'
 import { GetCategoriesUseCase } from '../../../useCases/GetCategoriesUseCase/GetCategoriesUseCase'
 import { Select } from '../../Select'
@@ -25,11 +25,11 @@ const formSchema = yup.object({
 type formData = yup.InferType<typeof formSchema>;
 
 export function NewTransactionModal() {
-    const newTransactionButton = <Button type="button" text="Nova Transação" size="medium" variant="primary" />
+    const newTransactionButton = <Button type="button" text="Nova Transação" size="medium" variant="primary" />;
 
     const closeModalRef = useRef<HTMLButtonElement>(null);
 
-    const { categories } = useStore(NewCategoryStore);
+    const { categories } = useStore(CategoryStore);
     const { isLoading, hasError, errorMessage } = useStore(TransactionStore);
 
     useEffect(() => {

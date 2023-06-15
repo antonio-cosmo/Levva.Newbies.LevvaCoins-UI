@@ -1,6 +1,5 @@
-import { Navigate, Outlet, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import { ProtectedRoutes } from "./ProtectedRoutes";
-import { validateToken } from "./helpers/validateToken";
 import { NewAccount } from "./pages/NewAccount";
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";

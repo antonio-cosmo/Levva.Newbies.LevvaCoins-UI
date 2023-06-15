@@ -1,9 +1,9 @@
 import { AxiosError } from "axios";
 import { Api } from "../../clients/api/Api";
-import { NewCategoryParams } from "../../domain/category";
+import { CategoryValues, NewCategoryParams } from "../../domain/category";
 import { RequestError } from "../../domain/request";
 
-const createCategory = async ({ description }: NewCategoryParams) => {
+const createCategory = async ({ description }: NewCategoryParams): Promise<CategoryValues> => {
     return Api.post({
         url: "/category",
         body: {
@@ -16,7 +16,7 @@ const createCategory = async ({ description }: NewCategoryParams) => {
         });
 }
 
-const getCategories = async () => {
+const getCategories = async (): Promise<CategoryValues[]> => {
     return Api.get({
         url: "/category",
     })

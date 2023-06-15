@@ -9,7 +9,7 @@ const initialState: CategoryState = {
     errorMessage: ""
 }
 
-export const NewCategoryStore = createStore<CategoryState>(initialState)
+export const CategoryStore = createStore<CategoryState>(initialState)
     .on(loadCategory, (state) => (
         {
             ...state,
@@ -29,7 +29,7 @@ export const NewCategoryStore = createStore<CategoryState>(initialState)
         {
             ...state,
             isLoading: false,
-            categories: data,
+            categories: [...data],
             hasError: false,
             errorMessage: ""
         }
