@@ -39,14 +39,14 @@ const removeTransaction = async ({ id }: RemoveTransactionParams) => {
         });
 }
 
-const seachTransactions = async (search: string | null) => {
-    if (search === null || search?.length <= 0) return getTransactions();
+const seachTransactions = async (searchValue: string | null) => {
+    if (searchValue === null || searchValue?.length <= 0) return getTransactions();
 
     return Api.get({
-        url: "/transaction",
+        url: "/transaction/search",
         config: {
             params: {
-                search
+                query: searchValue
             }
         }
     })

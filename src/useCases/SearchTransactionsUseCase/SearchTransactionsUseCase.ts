@@ -4,11 +4,11 @@ import { TransactionService } from "../../services/TransactionService/Transactio
 import { loadTransaction, loadTransactionDone, loadTransactionFail } from "../../stores/TransactionStore/TransactionEvents";
 
 
-const execute = async (search: string | null) => {
+const execute = async (searchValue: string | null) => {
 
     loadTransaction();
 
-    return TransactionService.seachTransactions(search)
+    return TransactionService.seachTransactions(searchValue)
         .then((transactions: TransactionValues[]) => {
             loadTransactionDone(transactions);
         })
