@@ -8,7 +8,7 @@ const execute = async ({ name, email, password }: NewAccountParams) => {
 
     loadNewAccount();
 
-    return AccountService.createUser({ name, email, password })
+    return AccountService.createAccount({ name, email, password })
         .then(() => {
             loadNewAccountDone();
             router.navigate("/login");

@@ -20,38 +20,41 @@ const formSchema = yup.object({
 
 type formData = yup.InferType<typeof formSchema>;
 
-export function EditProfileModal() {
-    const [user, setUser] = useState<LoginValues | null>(() => {
-        const storage = LocalStorageUser.getUser("user");
-        if (!storage) return null;
-        return storage
-    })
-
+export function UpdateAccountModal() {
     const { register, handleSubmit } = useForm<formData>({
         resolver: yupResolver(formSchema)
     })
-    const { isLoading, hasError, errorMessage } = useStore(AccountStore);
-    const avatarButton = <UserAvatar src="https://avatars.githubusercontent.com/u/77928459?v=4" variante="normal" />
 
-    const handleEditProfile = ({ name }: formData) => {
-        if (!user) return
+    const [user, setUser] = useState<LoginValues | null>(() => {
+        const storage = LocalStorageUser.getUser("user");
+        if (!storage) return null;
+        return storage;
+    })
+
+    const { isLoading, hasError, errorMessage } = useStore(AccountStore);
+
+    const avatarButton = <UserAvatar src="https://avatars.githubusercontent.com/u/77928459?v=4" variante="normal" />;
+
+    const handleUpdateAccount = ({ name }: formData) => {
+        if (!user) return;
+
         UpdateAccountUseCase.execute({
             id: user.id,
             name,
             avatar: user.avatar
-        })
+        });
 
-        setUser((oldUser) => (
-            { ...oldUser, name } as LoginValues)
-        )
+        setUser((oldUser) => ({ ...oldUser, name } as LoginValues));
     }
+
     const handleSignOut = () => {
         window.localStorage.removeItem("user");
         import("../../../pages/Login").then(() => router.navigate("/login", { replace: true }));
     }
+
     return (
         <Modal title="Meu perfil" trigger={avatarButton} >
-            <Form onSubmit={handleSubmit(handleEditProfile)}>
+            <Form onSubmit={handleSubmit(handleUpdateAccount)}>
                 <UserAvatar src="https://avatars.githubusercontent.com/u/77928459?v=4" variante="large" />
                 <Input type="text" defaultValue={user?.name} {...register("name")}
                 />

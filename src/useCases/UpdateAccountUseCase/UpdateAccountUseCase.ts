@@ -13,6 +13,7 @@ const execute = async ({ id, name, avatar }: UpadateAccountParams) => {
     return AccountService.updateAccount({ id, name, avatar })
         .then(() => {
             loadUpdateAccountDone();
+
             const userLocal = LocalStorageUser.getUser("user") as LoginValues;
             userLocal.name = name;
 

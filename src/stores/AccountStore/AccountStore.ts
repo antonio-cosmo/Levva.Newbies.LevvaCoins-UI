@@ -12,12 +12,14 @@ export const AccountStore = createStore<AccountState>(initialState)
         ...state,
         isLoading: true
     }))
-    .on(loadNewAccountDone, () => ({
+    .on(loadNewAccountDone, (state) => ({
+        ...state,
         isLoading: false,
         hasError: false,
         errorMessage: ""
     }))
-    .on(loadNewAccountFail, (_, data) => ({
+    .on(loadNewAccountFail, (state, data) => ({
+        ...state,
         isLoading: false,
         hasError: data.hasError,
         errorMessage: data.message
@@ -26,12 +28,14 @@ export const AccountStore = createStore<AccountState>(initialState)
         ...state,
         isLoading: true
     }))
-    .on(loadUpdateAccountDone, () => ({
+    .on(loadUpdateAccountDone, (state) => ({
+        ...state,
         isLoading: false,
         hasError: false,
         errorMessage: ""
     }))
-    .on(loadUpdateAccountFail, (_, data) => ({
+    .on(loadUpdateAccountFail, (state, data) => ({
+        ...state,
         isLoading: false,
         hasError: data.hasError,
         errorMessage: data.message
