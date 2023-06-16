@@ -1,5 +1,5 @@
 import { router } from "../../Router";
-import { LoginParams, LoginValues } from "../../domain/login";
+import { LoginParams } from "../../domain/login";
 import { RequestError } from "../../domain/request";
 import { LocalStorageUser } from "../../helpers/localStorageUser";
 import { LoginService } from "../../services/LoginService/LoginService";
@@ -11,8 +11,8 @@ const execute = async ({ email, password }: LoginParams) => {
     loadLogin();
 
     return LoginService.authenticateUser({ email, password })
-        .then((data: LoginValues) => {
-            LocalStorageUser.setUser("user", data);
+        .then((loginResponse) => {
+            LocalStorageUser.setUser("user", loginResponse);
 
             loadLoginDone();
 

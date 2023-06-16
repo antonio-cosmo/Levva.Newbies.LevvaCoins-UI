@@ -3,7 +3,7 @@ export interface LoginParams {
     password: string
 }
 
-export interface LoginValues {
+export interface LoginResponseValues {
     id: string
     name: string
     email: string;

@@ -1,9 +1,9 @@
 import { AxiosError } from "axios";
 import { Api } from "../../clients/api/Api";
-import { NewTransactionParams, RemoveTransactionParams, } from "../../domain/transaction";
+import { NewTransactionParams, RemoveTransactionParams, SearchTransactionsParams, TransactionValues, } from "../../domain/transaction";
 import { RequestError } from "../../domain/request";
 
-const createTransaction = async ({ description, amount, type, categoryId }: NewTransactionParams) => {
+const createTransaction = async ({ description, amount, type, categoryId }: NewTransactionParams): Promise<TransactionValues> => {
     return Api.post({
         url: "/transaction",
         body: {
@@ -19,7 +19,7 @@ const createTransaction = async ({ description, amount, type, categoryId }: NewT
         });
 }
 
-const getTransactions = async () => {
+const getTransactions = async (): Promise<TransactionValues[]> => {
     return Api.get({
         url: "/transaction",
     })
@@ -29,7 +29,7 @@ const getTransactions = async () => {
         });
 }
 
-const removeTransaction = async ({ id }: RemoveTransactionParams) => {
+const removeTransaction = async ({ id }: RemoveTransactionParams): Promise<void> => {
     return Api.delete({
         url: `/transaction/${id}`,
     })
@@ -39,14 +39,14 @@ const removeTransaction = async ({ id }: RemoveTransactionParams) => {
         });
 }
 
-const seachTransactions = async (searchValue: string | null) => {
-    if (searchValue === null || searchValue?.length <= 0) return getTransactions();
+const seachTransactions = async ({ search }: SearchTransactionsParams): Promise<TransactionValues[]> => {
+    if (!search || search.length <= 0) return getTransactions();
 
     return Api.get({
         url: "/transaction/search",
         config: {
             params: {
-                query: searchValue
+                query: search
             }
         }
     })

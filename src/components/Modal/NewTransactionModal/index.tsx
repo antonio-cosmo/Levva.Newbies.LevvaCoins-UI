@@ -14,7 +14,7 @@ import { CategoryStore } from '../../../stores/CategoryStore/CategoryStore'
 import { FormError } from '../../../styles/global'
 import { GetCategoriesUseCase } from '../../../useCases/GetCategoriesUseCase/GetCategoriesUseCase'
 import { Select } from '../../Select'
-import { strCapitalize } from '../../../helpers/capitalize'
+import { strCapitalize } from '../../../helpers/strCapitalize'
 
 const formSchema = yup.object({
     description: yup.string().required("A descrição é obrigatoria"),

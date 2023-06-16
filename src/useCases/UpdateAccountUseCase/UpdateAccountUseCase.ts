@@ -1,6 +1,6 @@
 
 import { RequestError } from "../../domain/request";
-import { LoginValues } from "../../domain/login";
+import { LoginResponseValues } from "../../domain/login";
 import { LocalStorageUser } from "../../helpers/localStorageUser";
 import { loadUpdateAccount, loadUpdateAccountDone, loadUpdateAccountFail } from "../../stores/AccountStore/AccountEvents";
 import { UpadateAccountParams } from "../../domain/account";
@@ -14,7 +14,7 @@ const execute = async ({ id, name, avatar }: UpadateAccountParams) => {
         .then(() => {
             loadUpdateAccountDone();
 
-            const userLocal = LocalStorageUser.getUser("user") as LoginValues;
+            const userLocal = LocalStorageUser.getUser("user") as LoginResponseValues;
             userLocal.name = name;
 
             LocalStorageUser.setUser("user", userLocal)

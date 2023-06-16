@@ -10,7 +10,7 @@
     {
       "uuid": "685597aa-1516-4a59-8ccc-ed3445986327",
       "name": "Users",
-      "collapsed": true,
+      "collapsed": false,
       "children": [
         {
           "type": "route",

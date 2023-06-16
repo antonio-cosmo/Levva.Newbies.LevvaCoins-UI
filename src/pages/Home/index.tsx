@@ -9,7 +9,7 @@ import { GetTransactionsUseCase } from "../../useCases/GetTransactionsUseCase/Ge
 import { Format } from "../../helpers/format";
 import { RemoveTransactionUseCase } from "../../useCases/RemoveTransactionUseCase/RemoveTransactionUseCase";
 import { ActionDeleteModal } from "../../components/Modal/ActionDeleteModal/indext";
-import { strCapitalize } from "../../helpers/capitalize";
+import { strCapitalize } from "../../helpers/strCapitalize";
 export function Home() {
     const { isLoading, transactions } = useStore(TransactionStore);
 

@@ -16,6 +16,9 @@ export interface TransactionValues {
     createdAt: string
 }
 
+export interface SearchTransactionsParams {
+    search?: string
+}
 export interface RemoveTransactionParams {
     id: string
 }
