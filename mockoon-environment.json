@@ -593,16 +593,11 @@
       "responses": [
         {
           "uuid": "6ca60598-c399-4e50-a795-a6fceb133a52",
-          "body": "[\n  {{#repeat 5 10}}\n    {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.productName'}}\",\n      \"amount\": {{toFixed (float 10.00 100.00) 2}},\n      \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n      \"category\": {\n        \"id\":\"{{guid}}\",\n        \"description\":\"{{faker 'commerce.department'}}\"\n      },\n      \"createdAt\":\"{{now 'YYYY-MM-dd'}}\"\n    }\n  {{/repeat}}\n]\n",
+          "body": "{{#switch (queryParam 'query')}}\n      {{#case 'teste'}}\n        [\n          {{#repeat 1 2}}\n            {\n              \"id\": \"{{guid}}\",\n              \"description\": \"{{queryParam 'query'}}\",\n              \"amount\": {{toFixed (float 10.00 100.00) 2}},\n              \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n              \"category\": {\n                \"id\":\"{{guid}}\",\n                \"description\":\"{{faker 'commerce.department'}}\"\n              },\n              \"createdAt\":\"{{now 'YYYY-MM-dd'}}\"\n            }\n          {{/repeat}}\n        ]\n      {{/case}}\n      \n      {{#default}}[]{{/default}}\n{{/switch}}\n\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",
-          "headers": [
-            {
-              "key": "query",
-              "value": "{{query.query}}"
-            }
-          ],
+          "headers": [],
           "bodyType": "INLINE",
           "filePath": "",
           "databucketID": "",
