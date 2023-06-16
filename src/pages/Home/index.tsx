@@ -9,6 +9,7 @@ import { GetTransactionsUseCase } from "../../useCases/GetTransactionsUseCase/Ge
 import { Format } from "../../helpers/format";
 import { RemoveTransactionUseCase } from "../../useCases/RemoveTransactionUseCase/RemoveTransactionUseCase";
 import { ActionDeleteModal } from "../../components/Modal/ActionDeleteModal/indext";
+import { strCapitalize } from "../../helpers/capitalize";
 export function Home() {
     const { isLoading, transactions } = useStore(TransactionStore);
 
@@ -42,13 +43,13 @@ export function Home() {
                         <tbody>
                             {transactions.map((transaction) => (
                                 <tr key={transaction.id}>
-                                    <td>{transaction.description}</td>
+                                    <td>{strCapitalize(transaction.description)}</td>
                                     <td>
                                         <PriceHighLight variant={transaction.type === "deposit" ? "income" : "outcome"}>
                                             {transaction.type === "credit" && "- "}{Format.Price(transaction.amount)}
                                         </PriceHighLight>
                                     </td>
-                                    <td>{transaction.category.description}</td>
+                                    <td>{strCapitalize(transaction.category.description)}</td>
                                     <td>{Format.DateFormat(transaction.createdAt)}</td>
                                     <td>
                                         <ActionDeleteModal onRemove={onRemoveTransaction} idToRemove={transaction.id} />

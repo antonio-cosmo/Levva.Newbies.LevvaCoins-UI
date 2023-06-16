@@ -14,6 +14,7 @@ import { CategoryStore } from '../../../stores/CategoryStore/CategoryStore'
 import { FormError } from '../../../styles/global'
 import { GetCategoriesUseCase } from '../../../useCases/GetCategoriesUseCase/GetCategoriesUseCase'
 import { Select } from '../../Select'
+import { strCapitalize } from '../../../helpers/capitalize'
 
 const formSchema = yup.object({
     description: yup.string().required("A descrição é obrigatoria"),
@@ -68,7 +69,7 @@ export function NewTransactionModal() {
 
                 <Select defaultValue="" {...register("categoryId")} >
                     <option value="" disabled hidden>Categoria</option>
-                    {categories.map((category) => <option key={category.id} value={category.id}>{category.description}</option>)}
+                    {categories.map((category) => <option key={category.id} value={category.id}>{strCapitalize(category.description)}</option>)}
                 </Select>
                 {errors.categoryId && <FormError>{errors.categoryId.message}</FormError>}
 
