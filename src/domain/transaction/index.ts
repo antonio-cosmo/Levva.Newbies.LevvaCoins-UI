@@ -1,19 +1,24 @@
 import { CategoryValues } from "../category";
 
-export interface NewTransactionParams {
-    description: string;
-    amount: number;
-    type: number;
-    categoryId: string;
+export enum TransactionTypeEnum {
+    income = 0,
+    outcome = 1
 }
 
 export interface TransactionValues {
     id: string;
     description: string;
     amount: number;
-    type: "deposit" | "credit";
+    type: TransactionTypeEnum;
     category: CategoryValues;
     createdAt: string
+}
+
+export interface NewTransactionParams {
+    description: string;
+    amount: number;
+    type: TransactionTypeEnum
+    categoryId: string;
 }
 
 export interface SearchTransactionsParams {

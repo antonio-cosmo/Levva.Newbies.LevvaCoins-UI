@@ -10,6 +10,7 @@ import { Format } from "../../helpers/format";
 import { RemoveTransactionUseCase } from "../../useCases/RemoveTransactionUseCase/RemoveTransactionUseCase";
 import { ActionDeleteModal } from "../../components/Modal/ActionDeleteModal/indext";
 import { strCapitalize } from "../../helpers/strCapitalize";
+import { TransactionTypeEnum } from "../../domain/transaction";
 export function Home() {
     const { isLoading, transactions } = useStore(TransactionStore);
 
@@ -45,8 +46,8 @@ export function Home() {
                                 <tr key={transaction.id}>
                                     <td>{strCapitalize(transaction.description)}</td>
                                     <td>
-                                        <PriceHighLight variant={transaction.type === "deposit" ? "income" : "outcome"}>
-                                            {transaction.type === "credit" && "- "}{Format.Price(transaction.amount)}
+                                        <PriceHighLight variant={transaction.type === TransactionTypeEnum.income ? "income" : "outcome"}>
+                                            {transaction.type === TransactionTypeEnum.outcome && "- "}{Format.Price(transaction.amount)}
                                         </PriceHighLight>
                                     </td>
                                     <td>{strCapitalize(transaction.category.description)}</td>

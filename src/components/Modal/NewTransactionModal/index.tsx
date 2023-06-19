@@ -15,6 +15,7 @@ import { FormError } from '../../../styles/global'
 import { GetCategoriesUseCase } from '../../../useCases/GetCategoriesUseCase/GetCategoriesUseCase'
 import { Select } from '../../Select'
 import { strCapitalize } from '../../../helpers/strCapitalize'
+import { TransactionTypeEnum } from '../../../domain/transaction'
 
 const formSchema = yup.object({
     description: yup.string().required("A descrição é obrigatoria"),
@@ -45,7 +46,7 @@ export function NewTransactionModal() {
         NewTransactionUseCase.execute({
             description,
             amount,
-            type: type === "income" ? 0 : 1,
+            type: type === "income" ? TransactionTypeEnum.income : TransactionTypeEnum.outcome,
             categoryId
         })
             .then(() => {
